@@ -26,11 +26,9 @@ app.get("/err",(req,res,next) =>{
         abcd = abcd;
 });
 
-
 app.use( (err,req,res,next) => {
-        console.log("------ERROR-----");
-        res.send(err);
-
+        let { status=500,message = "Some Error Occurred"} = err;
+        res.status(status).send(message); 
 });
 
 
